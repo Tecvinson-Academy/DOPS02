@@ -22,7 +22,7 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-resource "aws_subnet" "private_subnet" {
+resource "aws_subnet" "private_subnet01" {
   vpc_id            = "vpc-08fcbd2bedfbbddaa" 
   cidr_block        = "192.168.224.0/19"
   availability_zone = "us-east-1b"
@@ -57,11 +57,10 @@ resource "aws_ecr_repository" "ecr" {
   }
 }
 
-resource "aws_ecr_repository" "ecr" {
+resource "aws_ecr_repository" "ecr01" {
   name                 = "dopso2-be"
   image_tag_mutability = "MUTABLE"
-
-  image_scanning_configuration {
+git 
     scan_on_push = true
   }
 
