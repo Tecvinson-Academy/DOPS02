@@ -9,9 +9,9 @@ variable "vpc_id" {
 }
 
 variable "db_password" {
-  type = string
+  type = string 
+  default = "password123"
 }
-
 
 resource "aws_subnet" "private_subnet" {
   vpc_id            = "vpc-08fcbd2bedfbbddaa"
