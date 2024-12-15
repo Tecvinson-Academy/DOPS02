@@ -5,15 +5,16 @@ provider "aws" {
 
 # Define variables for the vpc
 variable "vpc_id" {
-  default = "vpc-08fcbd2bedfbbddaa" 
-  }
+  default = "vpc-08fcbd2bedfbbddaa"
+}
 
 variable "db_password" {
-    }
+  type = string
 
+}
 
 resource "aws_subnet" "private_subnet" {
-  vpc_id            = "vpc-08fcbd2bedfbbddaa" 
+  vpc_id            = "vpc-08fcbd2bedfbbddaa"
   cidr_block        = "192.168.192.0/19"
   availability_zone = "us-east-1a"
 
@@ -22,8 +23,8 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-resource "aws_subnet" "private_subnet" {
-  vpc_id            = "vpc-08fcbd2bedfbbddaa" 
+resource "aws_subnet" "private_subnet01" {
+  vpc_id            = "vpc-08fcbd2bedfbbddaa"
   cidr_block        = "192.168.224.0/19"
   availability_zone = "us-east-1b"
 
@@ -33,14 +34,14 @@ resource "aws_subnet" "private_subnet" {
 }
 
 resource "aws_db_instance" "db_instance" {
-  identifier             = "db_instance"
-  instance_class         = "db.t3.micro"
-  allocated_storage      = 5
-  engine                 = "mysql"
-  engine_version         = "14.1"
-  username               = "admin"
-  password               = var.db_password
-  skip_final_snapshot    = true
+  identifier          = "db-instance"
+  instance_class      = "db.t3.micro"
+  allocated_storage   = 5
+  engine              = "mysql"
+  engine_version      = "8.0"
+  username            = "admin"
+  password            = var.db_password
+  skip_final_snapshot = true
 }
 
 resource "aws_ecr_repository" "ecr" {
@@ -57,10 +58,9 @@ resource "aws_ecr_repository" "ecr" {
   }
 }
 
-resource "aws_ecr_repository" "ecr" {
+resource "aws_ecr_repository" "ecr01" {
   name                 = "dopso2-be"
   image_tag_mutability = "MUTABLE"
-
   image_scanning_configuration {
     scan_on_push = true
   }
@@ -70,16 +70,15 @@ resource "aws_ecr_repository" "ecr" {
     Name        = "dopso2-be"
   }
 }
-
 terraform {
 
   backend "s3" {
 
     bucket = "dops02-terraform"
 
-    key    = "state-file-folder"
+    key = "state-file-folder"
 
-    region = "us-east-1"
+    region = "us-east-2"
 
   }
 
