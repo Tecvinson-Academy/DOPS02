@@ -77,7 +77,7 @@ terraform {
 
     key = "state-file-folder"
 
-    region = "us-east-1"
+    region = "us-east-2"
 
   }
 
