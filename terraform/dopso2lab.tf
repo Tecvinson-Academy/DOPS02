@@ -10,7 +10,7 @@ variable "vpc_id" {
 
 variable "db_password" {
   type    = string
-  default = "password123"
+
 }
 
 resource "aws_subnet" "private_subnet" {
@@ -38,7 +38,7 @@ resource "aws_db_instance" "db_instance" {
   instance_class      = "db.t3.micro"
   allocated_storage   = 5
   engine              = "mysql"
-  engine_version      = "14.1"
+  engine_version      = "8.0"
   username            = "admin"
   password            = var.db_password
   skip_final_snapshot = true
