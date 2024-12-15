@@ -33,7 +33,7 @@ resource "aws_subnet" "private_subnet01" {
 }
 
 resource "aws_db_instance" "db_instance" {
-  identifier          = "db_instance"
+  identifier          = "db-instance"
   instance_class      = "db.t3.micro"
   allocated_storage   = 5
   engine              = "mysql"
