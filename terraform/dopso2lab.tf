@@ -9,7 +9,7 @@ variable "vpc_id" {
 }
 
 variable "db_password" {
-  type    = string
+  type = string
 
 }
 
