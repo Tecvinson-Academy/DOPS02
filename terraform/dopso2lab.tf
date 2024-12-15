@@ -8,7 +8,7 @@ variable "vpc_id" {
   default = "vpc-08fcbd2bedfbbddaa"
 }
 
-variable "db_password"  {
+variable "db_password" {
   type = string
 }
 
